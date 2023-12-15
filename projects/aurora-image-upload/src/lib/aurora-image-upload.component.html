@@ -1,0 +1,44 @@
+<!-- input --------------------------------------------------------------------------------------------------------- -->
+<input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)" multiple>
+
+<!-- drag drop box ------------------------------------------------------------------------------------------------- -->
+<div
+  libDragDropImage class="drag-drop"
+  (fileDropped)="onFileDropped($event)"
+  (click)="onFileInputClick()"
+  (mouseenter)="isHovering = true"
+  (mouseleave)="isHovering = false">
+
+  <!-- image uploaded ---------------------------------------------------------------------------------------------- -->
+  <ng-container *ngIf="isUpload">
+    <img #imgPreview src="#" alt="Image preview" class="image-upload"/>
+  </ng-container>
+
+  <!-- not upload image -------------------------------------------------------------------------------------------- -->
+  <ng-container *ngIf="!isUpload">
+    <div class="icon-dd"><i class="fa fa-image"></i></div>
+    <div class="upload-dd">Upload photos</div>
+    <div class="text-secondary small">or drag and drop</div>
+  </ng-container>
+
+  <!-- hovering ---------------------------------------------------------------------------------------------------- -->
+  <div class="hovering" *ngIf="isHovering">
+    <a *ngIf="isUpload" (click)="onClickCloseIcon($event)" (mouseover)="setCloseIconHovered(true)"
+       (mouseout)="setCloseIconHovered(false)">
+      <i class="fa fa-close close-icon"></i>
+    </a>
+    <div *ngIf="!isCloseIconHovered" class="font-weight-bold">Upload photos</div>
+    <div *ngIf="!isCloseIconHovered" class="small font-weight-bold">or drag and drop</div>
+    <div *ngIf="isCloseIconHovered" class="font-weight-bold">Remove photo</div>
+  </div>
+</div>
+
+<!-- success/error message ----------------------------------------------------------------------------------------- -->
+<div
+  *ngIf="this.message.text"
+  class="mt-3 small"
+  [ngClass]="{ 'text-success': this.message.type == this.message.SUCCESS_TYPE, 'text-danger': this.message.type == this.message.ERROR_TYPE}"
+>
+  {{ this.message.text }}
+</div>
+
