@@ -5,7 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Message} from "./models";
-
+import { faClose, faImage } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * Aurora image upload component is for uploading image with choose file or drag and drop
@@ -45,7 +45,8 @@ import {Message} from "./models";
   styleUrls: ['./aurora-image-upload.component.css']
 })
 export class AuroraImageUploadComponent implements OnInit, OnChanges{
-
+  faImage = faImage;
+  faClose = faClose;
   /**
    * file input tag in template
    */
@@ -136,8 +137,8 @@ export class AuroraImageUploadComponent implements OnInit, OnChanges{
   constructor(private http: HttpClient) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    debugger
-    throw new Error('Method not implemented.');
+    // debugger
+    // throw new Error('Method not implemented.');
   }
 
   /**

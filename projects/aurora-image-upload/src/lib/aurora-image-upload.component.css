@@ -1,3 +1,12 @@
+:host {
+  --gray-100: #f8f9fa;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --success: #198754;
+  --danger: #dc3545;
+}
+
 .drag-drop {
   position: relative;
   width: 200px;
@@ -65,4 +74,24 @@
   color: #fff;
   backdrop-filter: blur(3px);
   font-size: 1.1em;
+}
+
+.text-secondary-aurora {
+  color: var(--gray-600);
+}
+
+.text-success-aurora {
+  color: var(--success);
+}
+
+.text-danger-aurora {
+  color: var(--danger);
+}
+
+.small-aurora {
+  font-size: 0.8em;
+}
+
+.font-weight-bold-aurora {
+  font-weight: bold;
 }

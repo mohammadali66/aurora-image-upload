@@ -16,20 +16,22 @@
 
   <!-- not upload image -------------------------------------------------------------------------------------------- -->
   <ng-container *ngIf="!isUpload">
-    <div class="icon-dd"><i class="fa fa-image"></i></div>
+    <div class="icon-dd"><fa-icon [icon]="faImage"></fa-icon></div>
     <div class="upload-dd">Upload photos</div>
-    <div class="text-secondary small">or drag and drop</div>
+    <div class="text-secondary-aurora small-aurora">or drag and drop</div>
   </ng-container>
 
   <!-- hovering ---------------------------------------------------------------------------------------------------- -->
   <div class="hovering" *ngIf="isHovering">
     <a *ngIf="isUpload" (click)="onClickCloseIcon($event)" (mouseover)="setCloseIconHovered(true)"
        (mouseout)="setCloseIconHovered(false)">
-      <i class="fa fa-close close-icon"></i>
+<!--      <i class="fa fa-close close-icon"></i>-->
+      <span class="close-icon"><fa-icon [icon]="faClose"></fa-icon></span>
+
     </a>
-    <div *ngIf="!isCloseIconHovered" class="font-weight-bold">Upload photos</div>
-    <div *ngIf="!isCloseIconHovered" class="small font-weight-bold">or drag and drop</div>
-    <div *ngIf="isCloseIconHovered" class="font-weight-bold">Remove photo</div>
+    <div *ngIf="!isCloseIconHovered" class="font-weight-bold-aurora">Upload photos</div>
+    <div *ngIf="!isCloseIconHovered" class="small-aurora font-weight-bold-aurora">or drag and drop</div>
+    <div *ngIf="isCloseIconHovered" class="font-weight-bold-aurora">Remove photo</div>
   </div>
 </div>
 
@@ -37,7 +39,7 @@
 <div
   *ngIf="this.message.text"
   class="mt-3 small"
-  [ngClass]="{ 'text-success': this.message.type == this.message.SUCCESS_TYPE, 'text-danger': this.message.type == this.message.ERROR_TYPE}"
+  [ngClass]="{ 'text-success-aurora': this.message.type == this.message.SUCCESS_TYPE, 'text-danger-aurora': this.message.type == this.message.ERROR_TYPE}"
 >
   {{ this.message.text }}
 </div>
