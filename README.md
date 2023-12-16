@@ -25,3 +25,47 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## How to use it
+
+Aurora image upload component is for uploading image with choose file or drag and drop
+Example 1:
+```typescript
+validImageTypes = ['image/jpeg', 'image/png'];
+set_logo(event: any): void {
+  debugger
+}
+```
+
+```angular2html
+<aurora-image-upload
+      [max_height]="1500"
+      [max_width]="1500"
+      [max_size]="1512000"
+      [validImageTypes]="validImageTypes"
+      (uploadedImageFile)="set_logo($event)">
+</aurora-image-upload>
+```
+
+
+- When upload an image parent component can access to it with uploadedImageFile output
+
+
+Example 2:
+
+```typescript
+initImageUrl = '/assets/images/ultrasound/image_188.png';
+```
+
+```angular2html
+<aurora-image-upload
+      [max_height]="1500"
+      [max_width]="1500"
+      [max_size]="1512000"
+      [validImageTypes]="validImageTypes"
+      [initImageUrl]="initImageUrl"
+      (uploadedImageFile)="set_logo($event)">
+</aurora-image-upload>
+```
+
+- You can set an initial image to the component.
