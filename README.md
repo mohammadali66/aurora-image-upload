@@ -1,71 +1,50 @@
-# AuroraImageUpload
+# Aurora Image Upload Library
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
+This library provides a user-friendly component for uploading and validating images in Angular applications. It supports both file chooser and drag-and-drop methods for image uploading.
 
-## Development server
+## Key Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Image Dimension Limitations**: Set maximum width and height for the uploaded image in pixels using the `max_width` and `max_height` inputs. This helps to ensure that the uploaded image fits within your application's design constraints.
 
-## Code scaffolding
+- **Image Size Limitation**: Limit the size of the uploaded image using the `max_size` input. This input accepts the size in bytes, providing flexibility to set the limit based on your application's needs.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Image Type Validation**: Restrict the types of images that can be uploaded using the `validImageTypes` input. This input accepts an array of image MIME types, allowing you to specify which image formats are valid for your application.
 
-## Build
+- **Initial Image Setting**: Pre-load an image in the upload component using the `initImageUrl` input. This is useful when you want to display a default image before the user uploads a new one.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Image Upload Event**: The `uploadedImageFile` output emits the file of the uploaded image, allowing you to handle the image file in your application's logic. If the image is removed, it emits null.
 
-## Running unit tests
+## Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-## How to use it
-
-Aurora image upload component is for uploading image with choose file or drag and drop
-Example 1:
-```typescript
-validImageTypes = ['image/jpeg', 'image/png'];
-set_logo(event: any): void {
-  debugger
-}
+Install the library using npm:
+```bash
+npm install aurora-image-upload
 ```
 
-```angular2html
-<aurora-image-upload
-      [max_height]="1500"
-      [max_width]="1500"
-      [max_size]="1512000"
-      [validImageTypes]="validImageTypes"
-      (uploadedImageFile)="set_logo($event)">
+## Usage
+
+Import the `AuroraImageUploadModule` in your Angular module:
+```typescript
+import { AuroraImageUploadModule } from 'aurora-image-upload';
+
+@NgModule({ 
+  imports: [ 
+    // other imports 
+    AuroraImageUploadModule 
+  ], 
+    // other properties 
+}) 
+export class AppModule { }
+```
+
+Use the `aurora-image-upload` component in your Angular templates:
+```html
+<aurora-image-upload 
+  [max_height]="1000" 
+  [max_width]="1000" 
+  [max_size]="1000" 
+  [validImageTypes]="['image/jpeg', 'image/png']" 
+  [initImageUrl]="'https://example.com/image.jpg'" 
+  (uploadedImageFile)="handleImageUpload($event)"> 
 </aurora-image-upload>
 ```
-
-
-- When upload an image parent component can access to it with uploadedImageFile output
-
-
-Example 2:
-
-```typescript
-initImageUrl = '/assets/images/ultrasound/image_188.png';
-```
-
-```angular2html
-<aurora-image-upload
-      [max_height]="1500"
-      [max_width]="1500"
-      [max_size]="1512000"
-      [validImageTypes]="validImageTypes"
-      [initImageUrl]="initImageUrl"
-      (uploadedImageFile)="set_logo($event)">
-</aurora-image-upload>
-```
-
-- You can set an initial image to the component.
