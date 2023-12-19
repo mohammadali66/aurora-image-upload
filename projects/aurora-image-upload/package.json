@@ -1,6 +1,6 @@
 {
   "name": "aurora-image-upload",
-  "version": "0.0.3",
+  "version": "16.1.0",
   "author": "Mohammad Ali Khandan",
   "license": "MIT",
   "repository": {
@@ -17,5 +17,11 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "keywords": [
+    "angular",
+    "typescript",
+    "upload_image",
+    "drag_and_drop_image"
+  ]
 }
