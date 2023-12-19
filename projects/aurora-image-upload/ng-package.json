@@ -3,5 +3,10 @@
   "dest": "../../dist/aurora-image-upload",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "allowedNonPeerDependencies": [
+    "@fortawesome/angular-fontawesome",
+    "@fortawesome/fontawesome-svg-core",
+    "@fortawesome/free-solid-svg-icons"
+  ]
 }

@@ -136,11 +136,6 @@ export class AuroraImageUploadComponent implements OnInit, OnChanges{
 
   constructor(private http: HttpClient) { }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    // debugger
-    // throw new Error('Method not implemented.');
-  }
-
   /**
    * it calls onFileInput() to checks if initImageUrl is available
    * it calls convert_max_size_to_human_readable() to convert max size to human-readable
@@ -150,6 +145,16 @@ export class AuroraImageUploadComponent implements OnInit, OnChanges{
     this.onFileInput();
     this.convert_max_size_to_human_readable();
     this.convert_validImageTypes_to_human_readable();
+  }
+
+  /**
+   * It will call onFileInput() if initImageUrl has been changed.
+   * @param changes
+   */
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['initImageUrl']) {
+      this.onFileInput();
+    }
   }
 
   /**
